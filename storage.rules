@@ -1,0 +1,32 @@
+rules_version = '2';
+
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function roles() {
+      return isAuthenticated()
+        ? request.auth.token.get('roles', [])
+        : [];
+    }
+
+    function isStaff() {
+      return isAuthenticated() && roles().hasAny(['admin', 'curator', 'analyst']);
+    }
+
+    // Brand logos — public read, staff write
+    match /b/brand-logos/o/{allPaths=**} {
+      allow read: if true;
+      allow write: if isStaff();
+    }
+
+    // Experience images — public read, owner write under users/{uid}/
+    match /b/experience-images/o/users/{userId}/{allPaths=**} {
+      allow read: if true;
+      allow write: if isAuthenticated() && request.auth.uid == userId;
+    }
+  }
+}

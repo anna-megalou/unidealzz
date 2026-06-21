@@ -1,0 +1,203 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // -------------------------------------------------------------------------
+    // Helpers
+    // -------------------------------------------------------------------------
+
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    function roles() {
+      return isAuthenticated()
+        ? request.auth.token.get('roles', [])
+        : [];
+    }
+
+    function hasRole(role) {
+      return isAuthenticated() && roles().hasAny([role]);
+    }
+
+    function isStaff() {
+      return isAuthenticated() && roles().hasAny(['admin', 'curator', 'analyst']);
+    }
+
+    function isPublishedExperiencePost(postId) {
+      return get(/databases/$(database)/documents/experiencePosts/$(postId)).data.published == true;
+    }
+
+    function onlySettingsUpdated() {
+      return request.resource.data.diff(resource.data).affectedKeys().hasOnly([
+        'settings',
+        'updatedAt',
+      ]);
+    }
+
+    // -------------------------------------------------------------------------
+    // Public catalog (read-only from clients; writes via Cloud Functions)
+    // -------------------------------------------------------------------------
+
+    match /offers/{offerId} {
+      allow read: if resource.data.active == true || isStaff();
+      allow write: if false;
+    }
+
+    match /brands/{brandId} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    match /categories/{categoryId} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    match /universities/{universityId} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    match /publicStats/{docId} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    // -------------------------------------------------------------------------
+    // Users
+    // -------------------------------------------------------------------------
+
+    match /users/{userId} {
+      allow read: if isOwner(userId);
+      allow create: if false;
+      allow update: if isOwner(userId) && onlySettingsUpdated();
+      allow delete: if false;
+
+      match /fcmTokens/{tokenId} {
+        allow read, write: if false;
+      }
+
+      match /favorites/{favoriteId} {
+        allow read, write: if isOwner(userId);
+      }
+
+      match /savedOffers/{savedOfferId} {
+        allow read, write: if isOwner(userId);
+      }
+
+      match /claimedOffers/{claimedOfferId} {
+        allow read, write: if isOwner(userId);
+      }
+
+      match /purchases/{purchaseId} {
+        allow read, write: if isOwner(userId);
+      }
+    }
+
+    // -------------------------------------------------------------------------
+    // Experience posts
+    // -------------------------------------------------------------------------
+
+    match /experiencePosts/{postId} {
+      allow read: if resource.data.published == true
+        || isOwner(resource.data.userId)
+        || isStaff();
+      allow create: if isAuthenticated()
+        && request.auth.uid == request.resource.data.userId;
+      allow update, delete: if isOwner(resource.data.userId) || hasRole('admin');
+
+      match /comments/{commentId} {
+        allow read: if isPublishedExperiencePost(postId)
+          || isStaff()
+          || (isAuthenticated() && resource.data.userId == request.auth.uid);
+        allow create: if isAuthenticated()
+          && request.auth.uid == request.resource.data.userId
+          && isPublishedExperiencePost(postId);
+        allow update, delete: if isAuthenticated()
+          && (resource.data.userId == request.auth.uid || hasRole('admin'));
+      }
+
+      match /likes/{likeUserId} {
+        allow read: if isPublishedExperiencePost(postId) || isStaff();
+        allow create, delete: if isOwner(likeUserId)
+          && isPublishedExperiencePost(postId);
+        allow update: if false;
+      }
+    }
+
+    // -------------------------------------------------------------------------
+    // Support & operations
+    // -------------------------------------------------------------------------
+
+    match /supportTickets/{ticketId} {
+      allow read: if isStaff()
+        || (isAuthenticated() && resource.data.userId == request.auth.uid);
+      allow create: if true;
+      allow update, delete: if isStaff();
+    }
+
+    match /teamInvites/{inviteId} {
+      allow read: if isStaff()
+        || (isAuthenticated()
+          && resource.data.email == request.auth.token.email);
+      allow write: if false;
+    }
+
+    match /activityLog/{entryId} {
+      allow read: if isStaff();
+      allow write: if false;
+    }
+
+    match /partnershipRequests/{requestId} {
+      allow read: if isStaff();
+      allow write: if false;
+    }
+
+    match /verificationRequests/{requestId} {
+      allow read: if isStaff()
+        || (isAuthenticated() && resource.data.userId == request.auth.uid);
+      allow write: if false;
+    }
+
+    // -------------------------------------------------------------------------
+    // A/B testing
+    // -------------------------------------------------------------------------
+
+    match /abAssignments/{assignmentId} {
+      allow read: if isAuthenticated()
+        && resource.data.userId == request.auth.uid;
+      allow create: if isAuthenticated()
+        && request.resource.data.userId == request.auth.uid;
+      allow update, delete: if false;
+    }
+
+    match /abEvents/{eventId} {
+      allow read: if isStaff();
+      allow create: if isAuthenticated()
+        && request.resource.data.userId == request.auth.uid;
+      allow update, delete: if false;
+    }
+
+    // -------------------------------------------------------------------------
+    // Email infrastructure (Cloud Functions / Admin SDK only)
+    // -------------------------------------------------------------------------
+
+    match /emailSendLog/{logId} {
+      allow read, write: if false;
+    }
+
+    match /emailQueue/{queueId} {
+      allow read, write: if false;
+    }
+
+    match /suppressedEmails/{emailId} {
+      allow read, write: if false;
+    }
+  }
+}

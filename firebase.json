@@ -1,0 +1,91 @@
+{
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  },
+  "storage": {
+    "rules": "storage.rules"
+  },
+  "functions": {
+    "source": "packages/functions",
+    "runtime": "nodejs20",
+    "ignore": [
+      "node_modules",
+      "src",
+      ".git",
+      "*.ts",
+      "tsconfig.json",
+      "scripts",
+      "*.local"
+    ],
+    "predeploy": [
+      "node packages/functions/scripts/bump-version.mjs",
+      "npm --prefix packages/shared run build",
+      "node packages/functions/scripts/sync-local-packages.mjs",
+      "npm --prefix packages/functions run build"
+    ]
+  },
+  "hosting": [
+    {
+      "site": "unidealz-dashboard",
+      "public": "packages/dashboard/dist",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ],
+      "predeploy": [
+        "node packages/dashboard/scripts/bump-version.mjs",
+        "npm --prefix packages/shared run build",
+        "npm --prefix packages/dashboard run build"
+      ]
+    },
+    {
+      "site": "unidealz-website",
+      "public": "packages/website/dist",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ],
+      "predeploy": [
+        "node packages/website/scripts/bump-version.mjs",
+        "npm --prefix packages/shared run build",
+        "npm --prefix packages/website run build"
+      ]
+    }
+  ],
+  "emulators": {
+    "auth": {
+      "port": 9099
+    },
+    "functions": {
+      "port": 5001
+    },
+    "firestore": {
+      "port": 8080
+    },
+    "hosting": {
+      "port": 5000
+    },
+    "storage": {
+      "port": 9199
+    },
+    "ui": {
+      "enabled": true
+    },
+    "singleProjectMode": true
+  }
+}

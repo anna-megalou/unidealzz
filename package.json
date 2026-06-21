@@ -1,0 +1,36 @@
+{
+  "name": "unidealz",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Curated premium discounts for sophisticated students",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev -w @unidealz/dashboard",
+    "dev:website": "npm run dev -w @unidealz/website",
+    "build": "npm run build -ws",
+    "build:shared": "npm run build -w @unidealz/shared",
+    "build:functions": "npm run build -w @unidealz/functions",
+    "build:dashboard": "npm run build -w @unidealz/dashboard",
+    "build:website": "npm run build -w @unidealz/website",
+    "sync:functions": "npm run sync -w @unidealz/functions",
+    "emulate": "npm run build:shared && npm run sync:functions && npm run build:functions && npx firebase-tools emulators:start --only firestore,functions --import ./emulator-data --export-on-exit ./emulator-data",
+    "deploy": "npx firebase-tools deploy",
+    "deploy:functions": "npx firebase-tools deploy --only functions",
+    "deploy:hosting": "npx firebase-tools deploy --only hosting",
+    "lint": "npm run lint -ws --if-present",
+    "typecheck": "npm run typecheck -ws --if-present",
+    "test": "npm run test -w @unidealz/website && npm run test -w @unidealz/dashboard",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.6.0",
+    "@commitlint/config-conventional": "^19.6.0",
+    "husky": "^9.1.7",
+    "typescript": "^5.3.3"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

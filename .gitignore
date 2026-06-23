@@ -14,9 +14,11 @@ vite.config.d.ts
 # Environment files
 .env
 .env.local
-scripts/migrate/.env.local
-scripts/migrate/.migrate-checkpoint.json
-scripts/migrate/data/*.csv
+
+# Data exports (may contain PII — never commit)
+/data/
+**/data/
+*-export*.csv
 
 # Firebase
 .firebase/

@@ -1,2 +1,0 @@
-DELETE FROM saved_offers WHERE offer_id = '56a97051-20d8-4593-b79b-62c31cbe412f';
-DELETE FROM offers WHERE id = '56a97051-20d8-4593-b79b-62c31cbe412f';

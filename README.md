@@ -10,10 +10,6 @@ packages/
   website/    Public SPA — offers, about, contact, legal pages
   dashboard/  Auth, student hub, operations panel (PWA)
   functions/  Firebase Cloud Functions v2
-legacy/
-  student-deals-hub/  Original Lovable app (reference)
-scripts/
-  migrate/            Supabase → Firebase migration scripts
 ```
 
 ## Quick start
@@ -37,7 +33,7 @@ Set `VITE_USE_EMULATORS=true` in `packages/dashboard/.env.development` and `pack
 
 - Project ID: `unidealz-prod` (configure in `.firebaserc`)
 - Hosting sites: `unidealz-website`, `unidealz-dashboard`
-- See [SETUP_CHECKLIST.md](./SETUP_CHECKLIST.md) for console setup steps
+- See [docs/SETUP_CHECKLIST.md](./docs/SETUP_CHECKLIST.md) for console setup steps
 
 ## Deploy
 
@@ -46,10 +42,6 @@ npm run build:shared && npm run sync:functions && npm run build:functions
 npm run deploy
 ```
 
-## Data migration
-
-See [scripts/migrate/README.md](./scripts/migrate/README.md).
-
 ## Cutover
 
-See [CUTOVER.md](./CUTOVER.md) for production migration and DNS switch checklist.
+See [docs/CUTOVER.md](./docs/CUTOVER.md) for the production migration and DNS switch checklist (historical record of the Supabase → Firebase cutover).

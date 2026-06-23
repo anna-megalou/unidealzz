@@ -1,1 +1,0 @@
-ALTER TABLE public.team_invites ADD COLUMN IF NOT EXISTS full_name TEXT;

@@ -1,4 +1,0 @@
-id;user_id;favorite_categories;favorite_brands;budget_preference;online_vs_instore;onboarded;extra;created_at;updated_at
-73277cf9-d04c-49f6-b358-69a726d8d633;a75c02a1-6432-4349-9b80-d1ca01468249;[];[];;;true;{};2026-04-29 18:07:21.548269+00;2026-04-29 18:07:21.548269+00
-3ef771e3-30c8-4e28-aa14-8ba8b55170c6;ee03bec4-808b-4875-bf2b-6c534645015a;"[""food"",""technology""]";[];Budget-friendly;In-store;true;{};2026-05-17 09:11:41.858759+00;2026-05-17 09:11:41.858759+00
-0099b91c-4d3e-4ae3-ba6a-06dba0b878d8;a054a758-1720-4129-945e-a18825017661;[];[];;;true;{};2026-05-20 20:04:55.119682+00;2026-05-20 20:04:55.119682+00

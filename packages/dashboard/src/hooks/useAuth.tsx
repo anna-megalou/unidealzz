@@ -15,6 +15,7 @@ import {
   signOut as firebaseSignOut,
   updatePassword,
   confirmPasswordReset,
+  verifyPasswordResetCode,
   sendPasswordResetEmail,
 } from 'firebase/auth';
 import { doc, onSnapshot } from 'firebase/firestore';

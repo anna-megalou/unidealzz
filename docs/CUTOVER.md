@@ -16,12 +16,7 @@ Use this checklist when migrating from Supabase/Lovable to Firebase.
 
 1. **Freeze writes** on Lovable/Supabase (maintenance mode)
 2. **Export final snapshot** from Supabase
-3. **Run migration pipeline**:
-   ```bash
-   cd scripts/migrate
-   npm run run-all
-   npm run validate
-   ```
+3. **Run migration pipeline** (one-time, now completed; the `scripts/migrate` tooling has since been removed)
 4. **Deploy Firebase**:
    ```bash
    npm run build:shared && npm run sync:functions && npm run build:functions

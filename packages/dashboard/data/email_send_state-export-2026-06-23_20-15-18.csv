@@ -1,2 +1,0 @@
-id;retry_after_until;batch_size;send_delay_ms;auth_email_ttl_minutes;transactional_email_ttl_minutes;updated_at
-1;;10;200;15;60;2026-04-26 12:48:24.038935+00

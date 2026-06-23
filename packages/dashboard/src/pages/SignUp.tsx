@@ -26,6 +26,7 @@ import {
 import { MailCheck, Eye, EyeOff } from "lucide-react";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useLanguage } from "@/hooks/useLanguage";
+import signupHero from "@/assets/signup-hero.png";
 
 const SignUp = () => {
   const { t } = useLanguage();
@@ -152,8 +153,12 @@ const SignUp = () => {
               </p>
             </div>
 
-            <div className="w-full max-w-md rounded-2xl border border-border/50 bg-muted/30 aspect-square flex items-center justify-center text-sm text-muted-foreground">
-              {t("signup.cardImage.alt")}
+            <div className="w-full max-w-md overflow-hidden rounded-2xl border border-border/50 bg-muted/30">
+              <img
+                src={signupHero}
+                alt={t("signup.cardImage.alt")}
+                className="aspect-square w-full object-cover"
+              />
             </div>
           </div>
 

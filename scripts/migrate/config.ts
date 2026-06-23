@@ -24,6 +24,28 @@ function loadEnvFile(filename: string) {
 
 loadEnvFile('.env.local');
 
+export function configureFirebaseCredentials(): void {
+  const credentialsPath = process.env.GOOGLE_APPLICATION_CREDENTIALS;
+  const useEmulator = process.env.USE_FIREBASE_EMULATOR === 'true';
+
+  if (useEmulator) {
+    process.env.FIRESTORE_EMULATOR_HOST ??= '127.0.0.1:8080';
+    delete process.env.GOOGLE_APPLICATION_CREDENTIALS;
+    return;
+  }
+
+  if (!credentialsPath || credentialsPath.includes('/path/to/')) {
+    throw new Error(
+      'Set GOOGLE_APPLICATION_CREDENTIALS to your Firebase service account JSON path, ' +
+        'or set USE_FIREBASE_EMULATOR=true to import into the local Firestore emulator.',
+    );
+  }
+
+  if (!existsSync(credentialsPath)) {
+    throw new Error(`GOOGLE_APPLICATION_CREDENTIALS file not found: ${credentialsPath}`);
+  }
+}
+
 function requireEnv(name: string): string {
   const value = process.env[name];
   if (!value) {
@@ -32,12 +54,20 @@ function requireEnv(name: string): string {
   return value;
 }
 
+export function requireSupabaseConfig(): { url: string; serviceRoleKey: string } {
+  return {
+    url: requireEnv('SUPABASE_URL'),
+    serviceRoleKey: requireEnv('SUPABASE_SERVICE_ROLE_KEY'),
+  };
+}
+
 export const config = {
-  supabaseUrl: requireEnv('SUPABASE_URL'),
-  supabaseServiceRoleKey: requireEnv('SUPABASE_SERVICE_ROLE_KEY'),
+  supabaseUrl: process.env.SUPABASE_URL ?? '',
+  supabaseServiceRoleKey: process.env.SUPABASE_SERVICE_ROLE_KEY ?? '',
   firebaseProjectId: process.env.FIREBASE_PROJECT_ID ?? process.env.GCLOUD_PROJECT,
   googleApplicationCredentials: process.env.GOOGLE_APPLICATION_CREDENTIALS,
   dryRun: process.env.DRY_RUN === 'true',
+  useEmulator: process.env.USE_FIREBASE_EMULATOR === 'true',
   batchSize: Number(process.env.MIGRATE_BATCH_SIZE ?? '400'),
   checkpointFile: resolve(__dirname, process.env.CHECKPOINT_FILE ?? '.migrate-checkpoint.json'),
   experienceStorageBucket: process.env.FIREBASE_EXPERIENCE_BUCKET ?? 'experience-images',

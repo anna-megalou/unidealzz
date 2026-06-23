@@ -9,7 +9,7 @@ import { toast } from "sonner";
 import { ArrowRight, ShieldCheck, Shield, Eye, EyeOff } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
 import { useLanguage } from "@/hooks/useLanguage";
-import logo from "@/assets/logo.svg";
+import logo from "@/assets/logo.png";
 
 const Login = () => {
   const navigate = useNavigate();

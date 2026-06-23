@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useAuth } from "@/hooks/useAuth";
 import { useLanguage } from "@/hooks/useLanguage";
 import { toast } from "sonner";
-import logo from "@/assets/logo.svg";
+import logo from "@/assets/logo.png";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);

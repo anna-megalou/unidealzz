@@ -8,7 +8,7 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['logo.svg'],
+      includeAssets: ['logo.png', 'logo-192.png', 'logo-512.png'],
       manifest: {
         name: 'unidealz',
         short_name: 'Unidealz',

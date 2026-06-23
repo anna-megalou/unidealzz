@@ -16,6 +16,7 @@ vite.config.d.ts
 .env.local
 scripts/migrate/.env.local
 scripts/migrate/.migrate-checkpoint.json
+scripts/migrate/data/*.csv
 
 # Firebase
 .firebase/

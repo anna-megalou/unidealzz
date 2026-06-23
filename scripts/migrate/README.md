@@ -26,6 +26,8 @@ export GOOGLE_APPLICATION_CREDENTIALS=/path/to/service-account.json
 | `SUPABASE_SERVICE_ROLE_KEY` | Service role key |
 | `FIREBASE_PROJECT_ID` | Target Firebase project ID |
 | `GOOGLE_APPLICATION_CREDENTIALS` | Path to Firebase service account JSON |
+| `USE_FIREBASE_EMULATOR` | Set to `true` to write to local Firestore emulator (no service account needed) |
+| `FIRESTORE_EMULATOR_HOST` | Emulator host, default `127.0.0.1:8080` (optional) |
 | `DRY_RUN` | Set to `true` to log actions without writing (optional) |
 | `MIGRATE_BATCH_SIZE` | Firestore batch size, default `400` (optional) |
 | `FIREBASE_EXPERIENCE_BUCKET` | Firebase Storage bucket for experience images (default: `experience-images`) |
@@ -72,6 +74,39 @@ Dry run (no writes):
 
 ```bash
 DRY_RUN=true npm run migrate:01
+```
+
+### CSV import (Supabase export files)
+
+When you only have CSV exports (no live Supabase access), place files in `scripts/migrate/data/` or set paths via env:
+
+| Default file | Collection |
+|--------------|------------|
+| `universities-export.csv` | `universities` |
+| `user_roles-export.csv` | `userRoles` |
+| `ab_assignments-export.csv` | `abAssignments` |
+
+```bash
+# Preview counts
+DRY_RUN=true npm run import:csv
+
+# Write to Firestore (requires Firebase credentials in .env.local)
+npm run import:csv
+
+# Write to local Firestore emulator (start with `npm run emulate` first)
+USE_FIREBASE_EMULATOR=true FIREBASE_PROJECT_ID=unidealz-ad93f npm run import:csv
+
+# Custom paths
+CSV_UNIVERSITIES=/path/to/universities.csv \
+CSV_USER_ROLES=/path/to/user_roles.csv \
+CSV_AB_ASSIGNMENTS=/path/to/ab_assignments.csv \
+npm run import:csv
+```
+
+After importing `user_roles`, run step 07 to sync Firebase Auth custom claims:
+
+```bash
+npm run migrate:07
 ```
 
 ## Important notes

@@ -1,37 +1,45 @@
 import { createClient, type SupabaseClient } from '@supabase/supabase-js';
-import * as admin from 'firebase-admin';
-import { config, assertFirebaseProjectId } from '../config.js';
+import { getApps, initializeApp } from 'firebase-admin/app';
+import { getAuth as getAdminAuth } from 'firebase-admin/auth';
+import { getFirestore as getAdminFirestore } from 'firebase-admin/firestore';
+import { getStorage as getAdminStorage } from 'firebase-admin/storage';
+import { assertFirebaseProjectId, configureFirebaseCredentials, config } from '../config.js';
+import { requireSupabaseConfig } from '../config.js';
 
 let supabaseClient: SupabaseClient | null = null;
 
 export function getSupabase(): SupabaseClient {
   if (!supabaseClient) {
-    supabaseClient = createClient(config.supabaseUrl, config.supabaseServiceRoleKey, {
+    const { url, serviceRoleKey } = requireSupabaseConfig();
+    supabaseClient = createClient(url, serviceRoleKey, {
       auth: { persistSession: false, autoRefreshToken: false },
     });
   }
   return supabaseClient;
 }
 
-export function getFirebaseAdmin(): typeof admin {
-  if (admin.apps.length === 0) {
-    assertFirebaseProjectId();
-    admin.initializeApp({
-      projectId: config.firebaseProjectId,
-      storageBucket: `${config.firebaseProjectId}.appspot.com`,
-    });
-  }
-  return admin;
+function ensureFirebaseApp() {
+  if (getApps().length > 0) return;
+
+  configureFirebaseCredentials();
+  const projectId = assertFirebaseProjectId();
+  initializeApp({
+    projectId,
+    storageBucket: `${projectId}.appspot.com`,
+  });
 }
 
 export function getFirestore() {
-  return getFirebaseAdmin().firestore();
+  ensureFirebaseApp();
+  return getAdminFirestore();
 }
 
 export function getAuth() {
-  return getFirebaseAdmin().auth();
+  ensureFirebaseApp();
+  return getAdminAuth();
 }
 
 export function getStorage() {
-  return getFirebaseAdmin().storage();
+  ensureFirebaseApp();
+  return getAdminStorage();
 }

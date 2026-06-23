@@ -1,5 +1,5 @@
 /** Public static assets (legacy images may be added under src/assets later). */
-export const logo = '/logo.svg';
+export const logo = '/logo.png';
 export const heroImage = '/placeholder.svg';
 export const pigIcon = '/placeholder.svg';
 export const libraryImg = '/placeholder.svg';

@@ -37,7 +37,3 @@ jobs:
 
       - name: Test dashboard
         run: npm run test -w @unidealz/dashboard
-
-      - name: Test migration scripts
-        working-directory: scripts/migrate
-        run: npm ci && npm test

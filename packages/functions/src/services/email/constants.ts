@@ -1,5 +1,6 @@
 export const SITE_NAME = 'Unidealz';
 export const SITE_URL = process.env.SITE_URL ?? 'https://unidealz.gr';
+export const DASHBOARD_URL = process.env.DASHBOARD_URL ?? 'https://app.unidealz.gr';
 export const FROM_DOMAIN = process.env.EMAIL_FROM_DOMAIN ?? 'unidealz.gr';
 export const FROM_EMAIL =
   process.env.EMAIL_FROM_ADDRESS ?? `${SITE_NAME} <noreply@${FROM_DOMAIN}>`;

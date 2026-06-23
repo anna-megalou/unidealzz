@@ -17,10 +17,7 @@ export async function createAppPasswordResetUrl(
   email: string,
   appOrigin: string,
 ): Promise<string> {
-  const firebaseLink = await admin.auth().generatePasswordResetLink(email, {
-    url: `${appOrigin.replace(/\/$/, '')}/reset-password`,
-    handleCodeInApp: true,
-  });
-
+  // No continue URL — avoids authorized-domain checks; we rewrite the link to our app below.
+  const firebaseLink = await admin.auth().generatePasswordResetLink(email);
   return toAppPasswordResetUrl(firebaseLink, appOrigin);
 }

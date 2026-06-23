@@ -15,7 +15,7 @@ import {
   signOut as firebaseSignOut,
   updatePassword,
   confirmPasswordReset,
-  verifyPasswordResetCode,
+  sendPasswordResetEmail,
 } from 'firebase/auth';
 import { doc, onSnapshot } from 'firebase/firestore';
 import type { Role } from '@unidealz/shared';
@@ -27,6 +27,7 @@ import {
   callRequestPasswordReset,
   Collections,
   db,
+  USE_EMULATORS,
 } from '@/lib/firebase';
 
 interface AuthContextValue {
@@ -120,6 +121,12 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const resetPassword = async (email: string) => {
+    if (USE_EMULATORS) {
+      await sendPasswordResetEmail(auth, email, {
+        url: `${window.location.origin}/reset-password`,
+      });
+      return;
+    }
     await callRequestPasswordReset({ email });
   };
 

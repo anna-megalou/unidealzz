@@ -52,9 +52,11 @@ if (USE_EMULATORS) {
   connectFunctionsEmulator(functions, 'localhost', 5001);
 }
 
-// Initialize App Check for callable function protection
+// Initialize App Check for callable function protection (skip placeholder keys in emulator mode)
 const reCaptchaSiteKey = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
-if (reCaptchaSiteKey) {
+const isPlaceholderRecaptchaKey =
+  !reCaptchaSiteKey || reCaptchaSiteKey.startsWith('demo-');
+if (reCaptchaSiteKey && !(USE_EMULATORS && isPlaceholderRecaptchaKey)) {
   try {
     appCheck = initializeAppCheck(app, {
       provider: new ReCaptchaV3Provider(reCaptchaSiteKey),
@@ -65,7 +67,7 @@ if (reCaptchaSiteKey) {
     console.warn('App Check initialization failed:', e);
   }
 } else if (USE_EMULATORS) {
-  console.log('🔧 App Check: Skipped (no key, emulator mode)');
+  console.log('🔧 App Check: Skipped (emulator mode)');
 } else {
   console.warn('⚠️ App Check not initialized: VITE_RECAPTCHA_SITE_KEY not set');
 }

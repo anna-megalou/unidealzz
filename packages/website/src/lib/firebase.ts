@@ -51,7 +51,9 @@ if (useEmulators) {
 }
 
 const reCaptchaSiteKey = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
-if (reCaptchaSiteKey) {
+const isPlaceholderRecaptchaKey =
+  !reCaptchaSiteKey || reCaptchaSiteKey.startsWith('demo-');
+if (reCaptchaSiteKey && !(useEmulators && isPlaceholderRecaptchaKey)) {
   try {
     appCheck = initializeAppCheck(app, {
       provider: new ReCaptchaV3Provider(reCaptchaSiteKey),
@@ -62,7 +64,7 @@ if (reCaptchaSiteKey) {
     console.warn('App Check initialization failed:', e);
   }
 } else if (useEmulators) {
-  console.log('🔧 App Check: Skipped (no key, emulator mode)');
+  console.log('🔧 App Check: Skipped (emulator mode)');
 } else {
   console.warn('⚠️ App Check not initialized: VITE_RECAPTCHA_SITE_KEY not set');
 }

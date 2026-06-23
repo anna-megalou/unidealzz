@@ -1,5 +1,8 @@
 import type { CallableOptions } from 'firebase-functions/v2/https';
 
+/** App Check is disabled in the Functions emulator (no valid reCAPTCHA token locally). */
+const enforceAppCheck = process.env.FUNCTIONS_EMULATOR !== 'true';
+
 /**
  * Common configuration for all callable functions.
  * App Check is enforced to protect against abuse.
@@ -8,7 +11,7 @@ export const CALLABLE_CONFIG: CallableOptions = {
   region: 'us-central1',
   cors: true,
   invoker: 'public',
-  enforceAppCheck: true,
+  enforceAppCheck,
 };
 
 /**
@@ -17,7 +20,7 @@ export const CALLABLE_CONFIG: CallableOptions = {
  */
 export const AUTH_CALLABLE_CONFIG: CallableOptions = {
   ...CALLABLE_CONFIG,
-  consumeAppCheckToken: true,
+  ...(enforceAppCheck ? { consumeAppCheckToken: true } : {}),
 };
 
 /**

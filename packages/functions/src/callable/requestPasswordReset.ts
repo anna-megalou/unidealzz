@@ -2,7 +2,7 @@ import { onCall, HttpsError } from 'firebase-functions/v2/https';
 import { logger } from 'firebase-functions/v2';
 import { CALLABLE_CONFIG } from '../config';
 import { admin } from '../admin';
-import { SITE_URL } from '../services/email/constants';
+import { DASHBOARD_URL } from '../services/email/constants';
 import { sendAuthEmailNow } from '../services/email/emailSender';
 import { createAppPasswordResetUrl } from '../services/email/passwordResetLink';
 
@@ -11,11 +11,17 @@ interface RequestPasswordResetInput {
 }
 
 function resolveAppOrigin(requestOrigin: string | undefined): string {
+  const fallback = (process.env.DASHBOARD_URL ?? DASHBOARD_URL).replace(/\/$/, '');
   const fromRequest = requestOrigin?.trim();
   if (fromRequest && /^https?:\/\//.test(fromRequest)) {
-    return fromRequest.replace(/\/$/, '');
+    const origin = fromRequest.replace(/\/$/, '');
+    // Firebase Auth only allows authorized domains in reset links — localhost is not valid.
+    if (/^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/i.test(origin)) {
+      return fallback;
+    }
+    return origin;
   }
-  return (process.env.SITE_URL ?? SITE_URL).replace(/\/$/, '');
+  return fallback;
 }
 
 export const requestPasswordReset = onCall(CALLABLE_CONFIG, async (request) => {

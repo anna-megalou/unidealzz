@@ -156,6 +156,11 @@ export const callSubmitStudentVerification = httpsCallable<
   { success: boolean }
 >(functions, 'submitStudentVerification');
 
+export const callRequestPasswordReset = httpsCallable<
+  { email: string },
+  { success: boolean }
+>(functions, 'requestPasswordReset');
+
 export const callLogActivity = httpsCallable<
   {
     action: string;

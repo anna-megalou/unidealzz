@@ -1,0 +1,25 @@
+id;name;short_code;allowed_domains;created_at
+ea7a7adf-c421-4879-9d62-4703169efea3;Harokopio University;hua;"[""hua.gr""]";2026-04-22 07:36:03.930067+00
+f3adba1c-e954-488f-80e0-1771b349c46e;University of Ioannina;uoi;"[""uoi.gr""]";2026-04-22 07:36:03.930067+00
+5f4165b0-d8f7-4c15-aad9-71bec7e8158e;University of West Attica;uniwa;"[""uniwa.gr""]";2026-04-22 07:36:03.930067+00
+7a802046-94be-4bbf-9b24-7f3a8c3f153d;University of Piraeus;unipi;"[""unipi.gr""]";2026-04-22 07:36:03.930067+00
+089cfe59-6089-4551-a40a-66672f284f24;University of Crete;uoc;"[""uoc.gr""]";2026-04-22 07:36:03.930067+00
+1c971705-913b-4e01-b68f-73246e98a0fa;Technical University of Crete;tuc;"[""tuc.gr""]";2026-04-22 07:36:03.930067+00
+1cf929a8-2ec1-4e1f-9e20-2c11daf6ff9f;University of Western Macedonia;uowm;"[""uowm.gr""]";2026-04-22 07:36:03.930067+00
+d558be73-5f97-4596-b45d-b7c2451d16a2;Hellenic Mediterranean University;hmu;"[""hmu.gr""]";2026-04-22 07:36:03.930067+00
+3857a222-726e-496c-9b39-1fe0de087cff;Ionian University;ionio;"[""ionio.gr""]";2026-04-22 07:36:03.930067+00
+3a0b8234-73a9-4c61-8c37-f6f1de509b29;ASPETE;aspete;"[""aspete.gr""]";2026-04-22 07:36:03.930067+00
+0c02d594-7975-49b4-9fc9-829c5a4d70d5;Aristotle University of Thessaloniki;auth;"[""auth.gr""]";2026-04-22 07:36:03.930067+00
+91c7d36f-b706-418f-964d-5432b73b18dc;Democritus University of Thrace;duth;"[""duth.gr""]";2026-04-22 07:36:03.930067+00
+4481e1be-c70a-4161-b304-918673502191;University of Macedonia;uom;"[""uom.gr"",""uom.edu.gr""]";2026-04-22 07:36:03.930067+00
+ba5cf161-4906-4e5a-9664-29780983a61a;Athens University of Economics and Business;aueb;"[""aueb.gr""]";2026-04-22 07:36:03.930067+00
+2ef9911a-8de2-4513-baa5-eca0251edfde;University of Thessaly;uth;"[""uth.gr""]";2026-04-22 07:36:03.930067+00
+85878c9d-0dd8-478c-8540-789486d4129d;University of the Aegean;aegean;"[""aegean.gr""]";2026-04-22 07:36:03.930067+00
+41dbdb18-2718-4fcf-a96e-829a3412cbfb;University of Patras;upatras;"[""upatras.gr"",""upnet.gr""]";2026-04-22 07:36:03.930067+00
+98be01da-bb64-48f5-b860-73404fc1004f;National Technical University of Athens;ntua;"[""ntua.gr"",""mail.ntua.gr""]";2026-04-22 07:36:03.930067+00
+9cf11813-5ab3-4145-b0e8-9695f8f1d69d;International Hellenic University;ihu;"[""ihu.gr"",""ihu.edu.gr""]";2026-04-22 07:36:03.930067+00
+2ccf2e99-ad1a-414e-ac47-052ba5ffafcc;Agricultural University of Athens;aua;"[""aua.gr""]";2026-04-22 07:36:03.930067+00
+f7882dde-b802-42b7-8801-1941b1109ac8;University of Peloponnese;uop;"[""uop.gr"",""go.uop.gr""]";2026-04-22 07:36:03.930067+00
+27b5e1ec-9154-4ccf-9967-f6aef92c6955;Athens School of Fine Arts;asfa;"[""asfa.gr""]";2026-04-22 07:36:03.930067+00
+1d98f13e-591f-4d47-bc06-34bad80eeb4c;National and Kapodistrian University of Athens;uoa;"[""uoa.gr"",""di.uoa.gr""]";2026-04-22 07:36:03.930067+00
+febbfd3c-c8a8-47d1-9e39-d40c2a432831;Panteion University;panteion;"[""panteion.gr""]";2026-04-22 07:36:03.930067+00

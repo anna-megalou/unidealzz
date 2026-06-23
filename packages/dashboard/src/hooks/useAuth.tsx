@@ -13,7 +13,6 @@ import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   signOut as firebaseSignOut,
-  sendPasswordResetEmail,
   updatePassword,
   confirmPasswordReset,
   verifyPasswordResetCode,
@@ -21,7 +20,14 @@ import {
 import { doc, onSnapshot } from 'firebase/firestore';
 import type { Role } from '@unidealz/shared';
 import { STAFF_ROLES } from '@unidealz/shared';
-import { auth, callAcceptTeamInvite, callGetUserDetails, Collections, db } from '@/lib/firebase';
+import {
+  auth,
+  callAcceptTeamInvite,
+  callGetUserDetails,
+  callRequestPasswordReset,
+  Collections,
+  db,
+} from '@/lib/firebase';
 
 interface AuthContextValue {
   user: User | null;
@@ -114,9 +120,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const resetPassword = async (email: string) => {
-    await sendPasswordResetEmail(auth, email, {
-      url: `${window.location.origin}/reset-password`,
-    });
+    await callRequestPasswordReset({ email });
   };
 
   const updateUserPassword = async (password: string) => {

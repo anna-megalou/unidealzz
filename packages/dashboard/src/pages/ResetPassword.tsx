@@ -30,7 +30,7 @@ const ResetPassword = () => {
         setReady(true);
       })
       .catch(() => {
-        toast.error("Reset link is invalid or expired.");
+        toast.error("This reset link has expired. Request a new one from the login page.");
         navigate("/login");
       });
   }, [navigate, searchParams, verifyResetCode]);

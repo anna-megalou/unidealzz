@@ -21,6 +21,7 @@ export { getPublicStats } from './callable/getPublicStats';
 export { manageBrand } from './callable/manageBrand';
 export { logActivity } from './callable/logActivity';
 export { submitPartnershipRequest } from './callable/submitPartnershipRequest';
+export { requestPasswordReset } from './callable/requestPasswordReset';
 export { validateEmailUnsubscribe, confirmEmailUnsubscribe } from './callable/emailUnsubscribe';
 
 // HTTP (onRequest)

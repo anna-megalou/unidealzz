@@ -12,6 +12,7 @@
     "migrate:06": "tsx 06-operations-data.ts",
     "migrate:07": "tsx 07-set-custom-claims.ts",
     "import:csv": "tsx import-csv.ts",
+    "send:password-reset": "tsx send-password-reset.ts",
     "validate": "tsx validate.ts",
     "run-all": "tsx run-all.ts",
     "test": "vitest run"

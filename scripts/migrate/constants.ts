@@ -24,6 +24,8 @@ export const COLLECTIONS = {
   abAssignments: 'abAssignments',
   abEvents: 'abEvents',
   experiencePostImages: 'experiencePostImages',
+  partnershipRequests: 'partnershipRequests',
+  suppressedEmails: 'suppressedEmails',
 } as const;
 
 export type Role = 'admin' | 'student' | 'curator' | 'analyst';

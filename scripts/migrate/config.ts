@@ -1,6 +1,7 @@
 import { readFileSync, existsSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { assertServiceRoleKey } from './utils/supabaseKey.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -55,9 +56,11 @@ function requireEnv(name: string): string {
 }
 
 export function requireSupabaseConfig(): { url: string; serviceRoleKey: string } {
+  const serviceRoleKey = requireEnv('SUPABASE_SERVICE_ROLE_KEY');
+  assertServiceRoleKey(serviceRoleKey);
   return {
     url: requireEnv('SUPABASE_URL'),
-    serviceRoleKey: requireEnv('SUPABASE_SERVICE_ROLE_KEY'),
+    serviceRoleKey,
   };
 }
 

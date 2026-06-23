@@ -1,0 +1,12 @@
+id;actor_id;action;entity;entity_id;summary;metadata;created_at
+d0f7becd-54ff-4722-bde3-8f3a40fb55ce;a75c02a1-6432-4349-9b80-d1ca01468249;team.invite_revoked;team_invite;093c8e5b-3b08-4428-9b8a-337df2be9ce6;Revoked invite for aggmegalou@gmail.com;{};2026-04-26 12:34:07.118287+00
+2089a4ee-58be-4888-8cb0-4a664038008b;a75c02a1-6432-4349-9b80-d1ca01468249;team.invite_sent;team_invite;;Invited aggmegalou@gmail.com as curator;"{""email"":""aggmegalou@gmail.com"",""role"":""curator""}";2026-04-26 12:34:12.739262+00
+5850861e-42b3-4483-a682-8e1d519f8414;a75c02a1-6432-4349-9b80-d1ca01468249;team.invite_revoked;team_invite;d8cdfd3a-49c7-4867-b287-00cdb0fbec1d;Revoked invite for aggmegalou@gmail.com;{};2026-04-26 12:40:48.739543+00
+9f090cc1-4b79-4fa7-bcb4-f303fadfe86a;a75c02a1-6432-4349-9b80-d1ca01468249;team.invite_revoked;team_invite;ec8533ef-f562-4be6-aec3-933a1d982e1d;Revoked invite for t8230094@aueb.gr;{};2026-04-26 12:40:52.333649+00
+f5c08f79-0135-43ae-9003-27e70af131b4;a75c02a1-6432-4349-9b80-d1ca01468249;team.invite_revoked;team_invite;3d7c8e7d-456f-4f10-99c0-5eda6497b431;Revoked invite for aggmegalou@gmail.com;{};2026-04-26 12:43:00.247759+00
+35046305-869b-4106-9bf1-cbd714a34bd8;a75c02a1-6432-4349-9b80-d1ca01468249;team.invite_revoked;team_invite;f6df69f2-96cd-4cb7-9f9b-9bc59e597333;Revoked invite for aggmegalou@gmail.com;{};2026-04-26 12:46:28.611986+00
+a7e5fdf0-1843-4581-8d69-90456e47b498;a75c02a1-6432-4349-9b80-d1ca01468249;team.invite_revoked;team_invite;93704f30-f175-40f1-bf4f-475b0d2be7bf;Revoked invite for aggmegalou@gmail.com;{};2026-04-26 12:58:23.421093+00
+e0e3f092-45d0-4545-a9f2-7149004866f9;a75c02a1-6432-4349-9b80-d1ca01468249;team.invite_revoked;team_invite;2880205d-dc95-4bfb-83bc-30add35b1595;Revoked invite for aggmegalou@gmail.com;{};2026-04-28 15:33:46.873709+00
+80499081-356d-41a9-9b47-2983ae624687;a75c02a1-6432-4349-9b80-d1ca01468249;team.invite_revoked;team_invite;8d7811a1-6ba9-411e-b676-6447197b1936;Revoked invite for aggmegalou@gmail.com;{};2026-04-29 15:59:00.535316+00
+cac94843-f4ca-4f35-8c50-968ae24a30c2;a75c02a1-6432-4349-9b80-d1ca01468249;team.invite_revoked;team_invite;70eb1732-aef4-4486-81a9-7c02befe2661;Revoked invite for aggmegalou@gmail.com;{};2026-04-29 16:00:05.253263+00
+b9e3de89-d564-4eda-9f53-128401511a96;a75c02a1-6432-4349-9b80-d1ca01468249;team.invite_revoked;team_invite;9b6ea8ee-55e5-4618-83b2-1ad5c32d3c91;Revoked invite for hireandgo7@gmail.com;{};2026-04-29 16:13:06.362353+00

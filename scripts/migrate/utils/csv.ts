@@ -71,6 +71,36 @@ export function parseJsonArrayField(value: string): string[] {
   }
 }
 
+export function parseJsonObjectField(value: string): Record<string, unknown> | null {
+  const trimmed = value.trim();
+  if (!trimmed || trimmed === 'null') return null;
+
+  try {
+    const normalized = trimmed.replace(/""/g, '"');
+    const parsed = JSON.parse(normalized) as unknown;
+    return parsed && typeof parsed === 'object' && !Array.isArray(parsed)
+      ? (parsed as Record<string, unknown>)
+      : null;
+  } catch {
+    return null;
+  }
+}
+
+export function parseBooleanField(value: string, defaultValue = false): boolean {
+  const trimmed = value.trim().toLowerCase();
+  if (!trimmed) return defaultValue;
+  if (trimmed === 'true' || trimmed === 't' || trimmed === '1') return true;
+  if (trimmed === 'false' || trimmed === 'f' || trimmed === '0') return false;
+  return defaultValue;
+}
+
+export function parseNumberField(value: string, defaultValue = 0): number {
+  const trimmed = value.trim();
+  if (!trimmed) return defaultValue;
+  const num = Number(trimmed);
+  return Number.isFinite(num) ? num : defaultValue;
+}
+
 export function emptyToNull(value: string): string | null {
   return value.trim() === '' ? null : value.trim();
 }

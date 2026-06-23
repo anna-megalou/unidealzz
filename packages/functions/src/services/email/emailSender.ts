@@ -207,6 +207,54 @@ export async function sendTransactionalEmail(
 }
 
 export async function sendAuthEmail(input: SendAuthEmailInput): Promise<void> {
+  const { messageId, payload } = await buildAuthEmailPayload(input);
+
+  await logEmailSend({
+    messageId,
+    templateName: input.type,
+    recipientEmail: input.email,
+    status: 'pending',
+  });
+
+  await enqueueEmail(AUTH_QUEUE, payload);
+}
+
+/** Sends an auth email immediately via Resend (for time-sensitive flows like password reset). */
+export async function sendAuthEmailNow(input: SendAuthEmailInput): Promise<void> {
+  const { messageId, payload } = await buildAuthEmailPayload(input);
+
+  await logEmailSend({
+    messageId,
+    templateName: input.type,
+    recipientEmail: input.email,
+    status: 'pending',
+  });
+
+  try {
+    await sendViaResend(payload);
+    await logEmailSend({
+      messageId,
+      templateName: input.type,
+      recipientEmail: input.email,
+      status: 'sent',
+    });
+  } catch (error) {
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    await logEmailSend({
+      messageId,
+      templateName: input.type,
+      recipientEmail: input.email,
+      status: 'failed',
+      errorMessage: errorMsg.slice(0, 1000),
+    });
+    throw error;
+  }
+}
+
+async function buildAuthEmailPayload(input: SendAuthEmailInput): Promise<{
+  messageId: string;
+  payload: EmailQueuePayload;
+}> {
   const Template = AUTH_TEMPLATES[input.type];
   if (!Template) {
     throw new Error(`Unknown auth email type: ${input.type}`);
@@ -228,24 +276,20 @@ export async function sendAuthEmail(input: SendAuthEmailInput): Promise<void> {
   const subject = AUTH_EMAIL_SUBJECTS[input.type] ?? 'Notification';
   const messageId = randomUUID();
 
-  await logEmailSend({
+  return {
     messageId,
-    templateName: input.type,
-    recipientEmail: input.email,
-    status: 'pending',
-  });
-
-  await enqueueEmail(AUTH_QUEUE, {
-    messageId,
-    to: input.email,
-    from: FROM_EMAIL,
-    subject,
-    html,
-    text,
-    purpose: 'transactional',
-    label: input.type,
-    queuedAt: new Date().toISOString(),
-  });
+    payload: {
+      messageId,
+      to: input.email,
+      from: FROM_EMAIL,
+      subject,
+      html,
+      text,
+      purpose: 'transactional',
+      label: input.type,
+      queuedAt: new Date().toISOString(),
+    },
+  };
 }
 
 export async function sendViaResend(payload: EmailQueuePayload): Promise<void> {

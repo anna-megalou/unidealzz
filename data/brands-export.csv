@@ -1,0 +1,10 @@
+id;name;slug;logo_url;website;description;created_at;updated_at;archived_at
+081cf315-10c7-4e1b-8221-e3f93e7243a3;Starbucks;starbucks;;;Handcrafted beverages for late-night study sessions.;2026-04-22 07:36:03.930067+00;2026-04-22 07:36:03.930067+00;
+c0f7c2d1-7f3b-425d-b34d-0d3c88055ec4;Sony;sony;;;Industry-leading audio and electronics.;2026-04-22 07:36:03.930067+00;2026-04-22 07:36:03.930067+00;
+e362cdbb-e64e-43cb-b1d5-9226da05a063;Uber Eats;uber-eats;;;Food delivery for students.;2026-04-22 07:36:03.930067+00;2026-04-22 07:36:03.930067+00;
+82e3f545-8d52-48af-9952-64825ee2fbdb;Adidas;adidas;https://dmxkovuegpbdqfoqmggb.supabase.co/storage/v1/object/public/brand-logos/adidas-1776876749889.jpg;https://www.adidas.gr/;Everything you need to wear here in adidas;2026-04-22 16:37:14.435009+00;2026-04-22 16:52:30.446828+00;
+4756826e-34d5-4d2a-9eae-0ee0ccf3e38e;Apple;apple;https://dmxkovuegpbdqfoqmggb.supabase.co/storage/v1/object/public/brand-logos/apple-1776879080230.jpg;https://www.apple.com/gr/;Education pricing on Mac and iPad for students.;2026-04-22 07:36:03.930067+00;2026-04-22 17:31:20.801499+00;
+e9fd7128-b9bc-48b9-a229-55e122899b59;H&M;hm;;;Sustainable fashion essentials.;2026-04-22 07:36:03.930067+00;2026-04-22 17:48:08.284602+00;2026-04-22 17:48:08.044+00
+07103fe7-8986-4456-811e-0b571efe24be;Qui Madame;qui-madame;;;Cozy coffee spot near AUEB;2026-05-23 15:28:57.677573+00;2026-05-23 15:28:57.677573+00;
+99e5affa-c87b-4f2e-8293-953dd8c14044;Tziola Bookshop;tziola-bookshop;;;Academic bookshop trusted by AUEB students;2026-05-23 15:44:26.659978+00;2026-05-23 15:44:26.659978+00;
+41094e6c-9ab9-4043-a841-13517612d45e;Francy's Coffee;fransys-coffee;;;Beloved coffee spot near AUEB;2026-05-23 15:44:26.659978+00;2026-05-23 15:58:39.643978+00;

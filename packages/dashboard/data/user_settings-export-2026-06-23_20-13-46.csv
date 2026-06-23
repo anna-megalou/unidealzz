@@ -1,0 +1,25 @@
+id;user_id;phone;language;timezone;currency;theme;email_notifications;push_notifications;security_alerts;created_at;updated_at;savings_goal;marketing_opt_in;favorite_brand_alerts_opt_in
+1158619b-ed68-42ab-b306-89622b142c2b;a75c02a1-6432-4349-9b80-d1ca01468249;6975715423;en;europe-athens;eur;light;true;true;true;2026-04-22 18:06:57.762322+00;2026-04-27 15:38:22.21078+00;200.00;false;true
+faad9e3d-f9ac-4823-82dc-565f20a55abd;8b2febed-754f-467c-9c58-7ba49b09f6ba;;en;europe-athens;eur;light;true;true;true;2026-05-11 17:16:15.026182+00;2026-05-11 17:16:15.026182+00;2000.00;false;true
+86e31e79-f3fa-4ffe-aebc-ff0084860382;29711fcd-2819-4eba-ac64-26912b149a29;;en;europe-athens;eur;light;true;true;true;2026-05-11 17:29:06.227348+00;2026-05-11 17:29:06.227348+00;2000.00;false;true
+39f4a8f2-59dd-45c6-955e-17d904cb7b16;6158e7a8-8af7-4b13-bc3e-773f11c2c6a9;;en;europe-athens;eur;light;true;true;true;2026-05-11 17:41:06.88556+00;2026-05-11 17:41:06.88556+00;2000.00;false;true
+a8fdbc5a-8f3c-47db-83b9-f67868acf94f;51f6b3ca-8a1d-4943-be94-ae9cb6935283;;en;europe-athens;eur;light;true;true;true;2026-05-11 18:36:14.526793+00;2026-05-11 18:36:14.526793+00;2000.00;true;true
+48e18898-8304-47bb-82f7-15c0b4562c64;a294f1d0-67f1-4fc5-a0ea-ef4ef1e964ae;;en;europe-athens;eur;light;true;true;true;2026-05-11 19:34:05.895261+00;2026-05-11 19:34:05.895261+00;2000.00;true;true
+9d1379af-9bb9-4aa6-af52-5fbe01446744;92bf0a71-299d-4e21-ba45-859d4e5ffad4;;en;europe-athens;eur;light;true;true;true;2026-05-11 20:16:15.230858+00;2026-05-11 20:16:15.230858+00;2000.00;true;true
+29d5845a-fe6e-4471-b492-eed3292ee455;5de9d88b-4d82-49c8-b7d4-f3e926bdf7c2;;en;europe-athens;eur;light;true;true;true;2026-05-11 22:11:11.964672+00;2026-05-11 22:11:11.964672+00;2000.00;true;true
+2324abf6-f678-4a16-9290-b815f2ac1414;c5ba1e20-6f38-42b4-9f30-0742593b1b15;;en;europe-athens;eur;light;true;true;true;2026-05-13 16:30:55.218075+00;2026-05-13 16:30:55.218075+00;2000.00;true;true
+d722d5d2-57b9-4342-bd19-c1f17bf245fe;3f712d89-3271-482d-95bb-eeaf8b7f982e;;en;europe-athens;eur;light;true;true;true;2026-05-13 16:35:55.878939+00;2026-05-13 16:35:55.878939+00;2000.00;true;true
+87de7bc9-62ab-49eb-8e6a-ece952fd9adb;8e465f01-bd25-4b81-9f35-fb96a03a7694;;en;europe-athens;eur;light;true;true;true;2026-05-13 17:54:56.095848+00;2026-05-13 17:54:56.095848+00;2000.00;true;true
+d7385051-d88e-492b-af23-27d8bb5ddef6;eeb8310c-4cca-413c-b843-5413411df786;;en;europe-athens;eur;light;true;true;true;2026-05-13 22:35:05.287506+00;2026-05-13 22:35:05.287506+00;2000.00;true;true
+2a2bdda4-4a37-4179-b80a-b6c2b4dcfb22;e16bdc1c-cdb9-42a2-9f5a-50ea99191bc4;;en;europe-athens;eur;light;true;true;true;2026-05-14 13:44:09.721358+00;2026-05-14 13:44:09.721358+00;2000.00;true;true
+8f1331c0-c2f5-4eb5-9e70-6c7a47a497d7;a5f57fd7-2e1f-49dd-ad2b-af365af88da9;;en;europe-athens;eur;light;true;true;true;2026-05-14 14:12:38.738549+00;2026-05-14 14:12:38.738549+00;2000.00;true;true
+dc30799e-c0c6-426e-b844-1cfe9c06f611;b392acf7-fc0b-471a-8b2d-520a998c85a7;;en;europe-athens;eur;light;true;true;true;2026-05-14 14:13:07.385059+00;2026-05-14 14:13:07.385059+00;2000.00;true;true
+0e0506a2-525e-4c8b-a2a7-86c8107e4f0b;6b02699e-77a5-47f4-a553-569bb9590888;;en;europe-athens;eur;light;true;true;true;2026-05-14 14:26:26.324204+00;2026-05-14 14:26:26.324204+00;2000.00;true;true
+4686c5b7-9047-40f3-9bca-1ab4fbc3ca4f;44b69ea7-c7c7-48a9-af10-386b9f288641;;en;europe-athens;eur;light;true;true;true;2026-05-15 18:12:12.083128+00;2026-05-15 18:12:12.083128+00;2000.00;true;true
+69bfd37c-e56f-4301-90e2-8b3b760d0aeb;f829c79a-7cf3-416f-8a0e-45a76e312b97;;en;europe-athens;eur;light;true;true;true;2026-05-15 19:54:38.318979+00;2026-05-15 19:54:38.318979+00;2000.00;true;true
+5a095662-720f-4cca-962c-f688f4861499;ee03bec4-808b-4875-bf2b-6c534645015a;;en;europe-athens;eur;light;true;true;true;2026-05-17 09:09:56.281137+00;2026-05-17 09:09:56.281137+00;2000.00;true;true
+8a9edddf-d754-4a2d-9f0e-18b6ebd4935d;510f3347-45a7-4e44-8fbd-4c4f87f05022;;en;europe-athens;eur;light;true;true;true;2026-05-18 16:13:49.610176+00;2026-05-18 16:13:49.610176+00;2000.00;true;true
+2e564e8c-f6db-4746-8a63-0169a9781e8a;1ea05414-7023-47ae-8a6e-7f575323c952;;en;europe-athens;eur;light;true;true;true;2026-05-18 16:25:19.988437+00;2026-05-18 16:25:19.988437+00;2000.00;true;true
+41e16782-34a6-4b49-88cb-d92f1a916180;cb8d6862-bbd7-46f0-9c3e-a3039da415af;;en;europe-athens;eur;light;true;true;true;2026-05-22 12:01:04.89739+00;2026-05-22 12:01:04.89739+00;2000.00;true;true
+06089b70-16cd-48db-86ed-866cb2d17cd7;2717883b-4db6-4b87-a556-e2c6b38e5e24;;en;europe-athens;eur;light;true;true;true;2026-05-22 17:38:12.159901+00;2026-05-22 17:38:12.159901+00;2000.00;true;true
+2d556bf3-5191-4aea-9832-6c2c7b5ccb67;d16581ef-007e-4345-b9ba-9f43cf83ce8c;;en;europe-athens;eur;light;true;true;true;2026-05-22 19:49:33.064566+00;2026-05-22 19:49:33.064566+00;2000.00;true;true

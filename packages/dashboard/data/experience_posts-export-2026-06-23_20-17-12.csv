@@ -1,0 +1,2 @@
+id;user_id;brand_id;category_id;title;content;rating;would_recommend;savings_amount;location_text;visible;created_at;updated_at
+a49cc6fe-d665-416b-a81b-bef975e1d398;a75c02a1-6432-4349-9b80-d1ca01468249;081cf315-10c7-4e1b-8221-e3f93e7243a3;fb6f3be8-b315-4f45-bb1f-1c63744b3008;Best Coffe deal in Campus;I finally get starbucks under 5$;4;true;4.00;Athens;true;2026-04-23 16:03:23.384599+00;2026-04-23 16:03:23.384599+00
